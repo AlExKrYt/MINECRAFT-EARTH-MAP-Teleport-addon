@@ -1,0 +1,7 @@
+name: RealWorldTeleporter
+main: ua.aleksey.Main
+version: 1.0
+commands:
+  realworld:
+    permission: realworld.teleport
+    usage: /realworld
