@@ -1,4 +1,4 @@
-package ua.aleksey;
+package ua.aleksey.commands;
 
 import java.net.InetAddress;
 
@@ -8,6 +8,11 @@ import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.jline.utils.Log;
+
+import net.md_5.bungee.api.ChatColor;
+import ua.aleksey.Coordinates;
+import ua.aleksey.Geolocation;
+import ua.aleksey.Main;
 
 
 public class RealWorld implements CommandExecutor {
@@ -29,16 +34,22 @@ public class RealWorld implements CommandExecutor {
 			
 			InetAddress ip = p.getAddress().getAddress();
 			
+			if(args.length == 1) {
+				ip = InetAddress.getByName(args[0]);
+			}
+			
 			//Check if the ip is not null
 			if(ip == null){
 				Log.info("У игрока " + p.getName() + " нет IP, отмена!");
-			   return false;
+				p.sendMessage(ChatColor.RED + "Ошибка, IP не обнаружен, телепортация отменена. Сообщите об ошибке администратору!");
+			   return true;
 			}
 			 
 			//Check if the ip is not local   
 			if(ip.isAnyLocalAddress() || ip.isLoopbackAddress()){
 				Log.info("У игрока " + p.getName() + " локальный IP, отмена!");
-			   return false;
+				p.sendMessage(ChatColor.RED + "Ошибка, у Вас локальный IP, телепортация отменена. Если это не так, сообщите об ошибке администратору!");
+			   return true;
 			}
 			
 			

@@ -27,7 +27,7 @@ public class Coordinates {
 
         while ((inputLine = in.readLine()) != null) 
          //   System.out.println(inputLine);
-        setResponse(getResponse() + (inputLine));
+        response += (inputLine);
         in.close();
 	}
 	
@@ -52,15 +52,5 @@ public class Coordinates {
         Log.info(z);
         return z;
     }   
-
-	public String getResponse() {
-		return response;
-	}
-
-	public void setResponse(String response) {
-		this.response = response;
-	}
-
-
 
 }
