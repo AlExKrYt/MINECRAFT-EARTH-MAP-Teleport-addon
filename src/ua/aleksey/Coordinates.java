@@ -7,8 +7,6 @@ import java.net.URLConnection;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-import org.jline.utils.Log;
-
 public class Coordinates {
 	
 	private String response;
@@ -38,7 +36,6 @@ public class Coordinates {
         while(matcher.find())
            x = (Integer.parseInt(matcher.group()));
         
-        Log.info(x);
         return x;
     }   
 	
@@ -49,7 +46,6 @@ public class Coordinates {
         while(matcher.find())
            z = (Integer.parseInt(matcher.group()));
         
-        Log.info(z);
         return z;
     }   
 
